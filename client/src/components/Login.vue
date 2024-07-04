@@ -52,20 +52,24 @@ export default {
   },
   methods: {
     async login() {
-      const response = await fetch("http://localhost:3000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username: this.username, password: this.password }),
-      });
-      const data = await response.json();
-      if (response.ok) {
-        alert(data.message);
-        // Redirect to homepage
-        this.$router.push("/");
-      } else {
-        alert(data.message);
+      try {
+        const response = await fetch("http://localhost:3000/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username: this.username, password: this.password }),
+        });
+        const data = await response.json();
+        if (response.ok) {
+          alert(data.message);
+          // Redirect to dashboard
+          this.$router.push("/dashboard");
+        } else {
+          alert(data.message);
+        }
+      } catch (error) {
+        console.error("Error during login:", error);
       }
     },
   },
