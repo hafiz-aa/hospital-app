@@ -5,6 +5,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(cors());
+app.use(express.json()); // Middleware to parse JSON bodies
 
 // In-memory store for simplicity
 const users = [
