@@ -161,6 +161,7 @@ export default {
         this.name = "";
         this.specialty = "";
         this.email = "";
+        window.location.reload();
       } else {
         alert("Failed to add doctor");
       }
